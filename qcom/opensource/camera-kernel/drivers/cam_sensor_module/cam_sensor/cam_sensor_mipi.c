@@ -16,16 +16,52 @@
 #include <linux/kernel.h>
 #include <linux/dev_ril_bridge.h>
 #include "cam_sensor_mipi.h"
-#if defined(CONFIG_SEC_PLATFORM_DM3Q)
-#include "cam_sensor_adaptive_mipi_wide_s5khp2.h"
-#include "cam_sensor_adaptive_mipi_tele_imx754.h"
+
+// Wide
+#if defined(CONFIG_SEC_DM1Q_PROJECT) || defined(CONFIG_SEC_DM2Q_PROJECT) || defined(CONFIG_SEC_Q5Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_s5kgn3.h"
+#elif defined(CONFIG_SEC_DM3Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_s5khp2.h"
+#elif defined(CONFIG_SEC_B5Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_s5k2ld.h"
 #else
 #include "cam_sensor_adaptive_mipi_wide.h"
+#endif
+// Ultrawide
+#if defined(CONFIG_SEC_DM1Q_PROJECT) || defined(CONFIG_SEC_DM2Q_PROJECT) || defined(CONFIG_SEC_DM3Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_imx564.h"
+#elif defined(CONFIG_SEC_Q5Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_imx258.h"
+#elif defined(CONFIG_SEC_B5Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_imx258_b5.h"
+#else
+#include "cam_sensor_adaptive_mipi_uw.h"
+#endif
+// Telephoto
+#if defined(CONFIG_SEC_DM1Q_PROJECT) || defined(CONFIG_SEC_DM2Q_PROJECT) || defined(CONFIG_SEC_Q5Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_s5k3k1.h"
+#elif defined(CONFIG_SEC_DM3Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_imx754.h"
+#else
 #include "cam_sensor_adaptive_mipi_tele.h"
 #endif
-#include "cam_sensor_adaptive_mipi_uw.h"
+// Front
+#if defined(CONFIG_SEC_DM1Q_PROJECT) || defined(CONFIG_SEC_DM2Q_PROJECT) || defined(CONFIG_SEC_DM3Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_s5k3lu.h"
+#elif defined(CONFIG_SEC_Q5Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_imx374.h"
+#elif defined(CONFIG_SEC_B5Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_s5k3j1.h"
+#else
 #include "cam_sensor_adaptive_mipi_front.h"
+#endif
+// Front top
+#if defined(CONFIG_SEC_Q5Q_PROJECT)
+#include "cam_sensor_adaptive_mipi_imx471.h"
+#else
 #include "cam_sensor_adaptive_mipi_front_top.h"
+#endif
+
 #include "cam_sensor_dev.h"
 
 static int adaptive_mipi_mode;

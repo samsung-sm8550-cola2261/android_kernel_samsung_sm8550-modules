@@ -301,10 +301,11 @@ include $(DISPLAY_ROOT)/msm/samsung/DM1_LX83118_CM002/DM1_LX83118_CM002.conf
 ccflags-y += -include $(DISPLAY_ROOT)/msm/samsung/DM1_LX83118_CM002/DM1_LX83118_CM002.h
 
 #Translate .dat file to .h to cover the case which can not use request_firmware(Recovery Mode)
-CLEAR_TMP := $(shell rm -f DM1_LX83118_CM002_PDF_DATA)
+CLEAR_TMP := $(shell rm -rf include-samsung-gen)
+MAKE_DIR := $(shell mkdir -p include-samsung-gen)
 COPY_TO_HERE := $(shell cp -vf $(DISPLAY_ROOT)/msm/samsung/panel_data_file/DM1_LX83118_CM002.dat DM1_LX83118_CM002_PDF_DATA)
-DATA_TO_HEX := $(shell $(XXD) -i DM1_LX83118_CM002_PDF_DATA > $(DISPLAY_ROOT)/msm/samsung/DM1_LX83118_CM002/DM1_LX83118_CM002_PDF.h)
-ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' $(DISPLAY_ROOT)/msm/samsung/DM1_LX83118_CM002/DM1_LX83118_CM002_PDF.h)
+DATA_TO_HEX := $(shell $(XXD) -i DM1_LX83118_CM002_PDF_DATA > include-samsung-gen/DM1_LX83118_CM002_PDF.h)
+ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' include-samsung-gen/DM1_LX83118_CM002_PDF.h)
 
 msm_drm-$(CONFIG_PANEL_DM1_LX83118_CM002_FHD) += samsung/DM1_LX83118_CM002/DM1_LX83118_CM002_panel.o
 
@@ -319,10 +320,11 @@ include $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3XA2_AMF756BQ03/Q5_S6E3XA2_AMF756BQ03.
 ccflags-y +=	-include $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3XA2_AMF756BQ03/Q5_S6E3XA2_AMF756BQ03.h
 
 #Translate .dat file to .h to cover the case which can not use request_firmware(Recovery Mode)
-CLEAR_TMP := $(shell rm -f Q5_S6E3XA2_AMF756BQ03_PDF_DATA)
+CLEAR_TMP := $(shell rm -rf include-samsung-gen)
+MAKE_DIR := $(shell mkdir -p include-samsung-gen)
 COPY_TO_HERE := $(shell cp -vf $(DISPLAY_ROOT)/msm/samsung/panel_data_file/Q5_S6E3XA2_AMF756BQ03.dat Q5_S6E3XA2_AMF756BQ03_PDF_DATA)
-DATA_TO_HEX := $(shell $(XXD) -i Q5_S6E3XA2_AMF756BQ03_PDF_DATA > $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3XA2_AMF756BQ03/Q5_S6E3XA2_AMF756BQ03_PDF.h)
-ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3XA2_AMF756BQ03/Q5_S6E3XA2_AMF756BQ03_PDF.h)
+DATA_TO_HEX := $(shell $(XXD) -i Q5_S6E3XA2_AMF756BQ03_PDF_DATA > include-samsung-gen/Q5_S6E3XA2_AMF756BQ03_PDF.h)
+ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' include-samsung-gen/Q5_S6E3XA2_AMF756BQ03_PDF.h)
 
 msm_drm-$(CONFIG_PANEL_Q5_S6E3XA2_AMF756BQ03_QXGA) += samsung/Q5_S6E3XA2_AMF756BQ03/Q5_S6E3XA2_AMF756BQ03_panel.o
 
@@ -330,10 +332,11 @@ include $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3FAC_AMB619EK01/Q5_S6E3FAC_AMB619EK01.
 ccflags-y +=	-include $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3FAC_AMB619EK01/Q5_S6E3FAC_AMB619EK01.h
 
 #Translate .dat file to .h to cover the case which can not use request_firmware(Recovery Mode)
-CLEAR_TMP := $(shell rm -f Q5_S6E3FAC_AMB619EK01_PDF_DATA)
+CLEAR_TMP := $(shell rm -rf include-samsung-gen)
+MAKE_DIR := $(shell mkdir -p include-samsung-gen)
 COPY_TO_HERE := $(shell cp -vf $(DISPLAY_ROOT)/msm/samsung/panel_data_file/Q5_S6E3FAC_AMB619EK01.dat Q5_S6E3FAC_AMB619EK01_PDF_DATA)
-DATA_TO_HEX := $(shell $(XXD) -i Q5_S6E3FAC_AMB619EK01_PDF_DATA > $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3FAC_AMB619EK01/Q5_S6E3FAC_AMB619EK01_PDF.h)
-ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3FAC_AMB619EK01/Q5_S6E3FAC_AMB619EK01_PDF.h)
+DATA_TO_HEX := $(shell $(XXD) -i Q5_S6E3FAC_AMB619EK01_PDF_DATA > include-samsung-gen/Q5_S6E3FAC_AMB619EK01_PDF.h)
+ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' include-samsung-gen/Q5_S6E3FAC_AMB619EK01_PDF.h)
 
 msm_drm-$(CONFIG_PANEL_Q5_S6E3FAC_AMB619EK01_HD) += samsung/Q5_S6E3FAC_AMB619EK01/Q5_S6E3FAC_AMB619EK01_panel.o
 
@@ -341,10 +344,11 @@ include $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3XA2_AMF756EJ01/Q5_S6E3XA2_AMF756EJ01.
 ccflags-y +=	-include $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3XA2_AMF756EJ01/Q5_S6E3XA2_AMF756EJ01.h
 
 #Translate .dat file to .h to cover the case which can not use request_firmware(Recovery Mode)
-CLEAR_TMP := $(shell rm -f Q5_S6E3XA2_AMF756EJ01_PDF_DATA)
+CLEAR_TMP := $(shell rm -rf include-samsung-gen)
+MAKE_DIR := $(shell mkdir -p include-samsung-gen)
 COPY_TO_HERE := $(shell cp -vf $(DISPLAY_ROOT)/msm/samsung/panel_data_file/Q5_S6E3XA2_AMF756EJ01.dat Q5_S6E3XA2_AMF756EJ01_PDF_DATA)
-DATA_TO_HEX := $(shell $(XXD) -i Q5_S6E3XA2_AMF756EJ01_PDF_DATA > $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3XA2_AMF756EJ01/Q5_S6E3XA2_AMF756EJ01_PDF.h)
-ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' $(DISPLAY_ROOT)/msm/samsung/Q5_S6E3XA2_AMF756EJ01/Q5_S6E3XA2_AMF756EJ01_PDF.h)
+DATA_TO_HEX := $(shell $(XXD) -i Q5_S6E3XA2_AMF756EJ01_PDF_DATA > include-samsung-gen/Q5_S6E3XA2_AMF756EJ01_PDF.h)
+ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' include-samsung-gen/Q5_S6E3XA2_AMF756EJ01_PDF.h)
 
 msm_drm-$(CONFIG_PANEL_Q5_S6E3XA2_AMF756EJ01_QXGA) += samsung/Q5_S6E3XA2_AMF756EJ01/Q5_S6E3XA2_AMF756EJ01_panel.o
 endif
@@ -354,10 +358,11 @@ include $(DISPLAY_ROOT)/msm/samsung/B5_S6E3FC5_AMB338EH01/B5_S6E3FC5_AMB338EH01.
 ccflags-y +=	-include $(DISPLAY_ROOT)/msm/samsung/B5_S6E3FC5_AMB338EH01/B5_S6E3FC5_AMB338EH01.h
 
 #Translate .dat file to .h to cover the case which can not use request_firmware(Recovery Mode)
-CLEAR_TMP := $(shell rm -f B5_S6E3FC5_AMB338EH01_PDF_DATA)
+CLEAR_TMP := $(shell rm -rf include-samsung-gen)
+MAKE_DIR := $(shell mkdir -p include-samsung-gen)
 COPY_TO_HERE := $(shell cp -vf $(DISPLAY_ROOT)/msm/samsung/panel_data_file/B5_S6E3FC5_AMB338EH01.dat B5_S6E3FC5_AMB338EH01_PDF_DATA)
-DATA_TO_HEX := $(shell $(XXD) -i B5_S6E3FC5_AMB338EH01_PDF_DATA > $(DISPLAY_ROOT)/msm/samsung/B5_S6E3FC5_AMB338EH01/B5_S6E3FC5_AMB338EH01_PDF.h)
-ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' $(DISPLAY_ROOT)/msm/samsung/B5_S6E3FC5_AMB338EH01/B5_S6E3FC5_AMB338EH01_PDF.h)
+DATA_TO_HEX := $(shell $(XXD) -i B5_S6E3FC5_AMB338EH01_PDF_DATA > include-samsung-gen/B5_S6E3FC5_AMB338EH01_PDF.h)
+ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' include-samsung-gen/B5_S6E3FC5_AMB338EH01_PDF.h)
 
 msm_drm-$(CONFIG_PANEL_B5_S6E3FC5_AMB338EH01_SVGA) += samsung/B5_S6E3FC5_AMB338EH01/B5_S6E3FC5_AMB338EH01_panel.o
 
@@ -365,13 +370,16 @@ include $(DISPLAY_ROOT)/msm/samsung/B5_S6E3FAC_AMF670BS03/B5_S6E3FAC_AMF670BS03.
 ccflags-y +=	-include $(DISPLAY_ROOT)/msm/samsung/B5_S6E3FAC_AMF670BS03/B5_S6E3FAC_AMF670BS03.h
 
 #Translate .dat file to .h to cover the case which can not use request_firmware(Recovery Mode)
-CLEAR_TMP := $(shell rm -f B5_S6E3FAC_AMF670BS03_PDF_DATA)
+CLEAR_TMP := $(shell rm -rf include-samsung-gen)
+MAKE_DIR := $(shell mkdir -p include-samsung-gen)
 COPY_TO_HERE := $(shell cp -vf $(DISPLAY_ROOT)/msm/samsung/panel_data_file/B5_S6E3FAC_AMF670BS03.dat B5_S6E3FAC_AMF670BS03_PDF_DATA)
-DATA_TO_HEX := $(shell $(XXD) -i B5_S6E3FAC_AMF670BS03_PDF_DATA > $(DISPLAY_ROOT)/msm/samsung/B5_S6E3FAC_AMF670BS03/B5_S6E3FAC_AMF670BS03_PDF.h)
-ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' $(DISPLAY_ROOT)/msm/samsung/B5_S6E3FAC_AMF670BS03/B5_S6E3FAC_AMF670BS03_PDF.h)
+DATA_TO_HEX := $(shell $(XXD) -i B5_S6E3FAC_AMF670BS03_PDF_DATA > include-samsung-gen/B5_S6E3FAC_AMF670BS03_PDF.h)
+ADD_NULL_CHR := $(shell $(SED) -i -e 's/\([0-9a-f]\)$$/\0, 0x00/' include-samsung-gen/B5_S6E3FAC_AMF670BS03_PDF.h)
 
 msm_drm-$(CONFIG_PANEL_B5_S6E3FAC_AMF670BS03_FHD) += samsung/B5_S6E3FAC_AMF670BS03/B5_S6E3FAC_AMF670BS03_panel.o
 endif
+
+ccflags-y +=	-iquote include-samsung-gen
 
 include $(DISPLAY_ROOT)/msm/samsung/panel_common.conf
 ccflags-y +=	-include $(DISPLAY_ROOT)/msm/samsung/panel_common_conf.h

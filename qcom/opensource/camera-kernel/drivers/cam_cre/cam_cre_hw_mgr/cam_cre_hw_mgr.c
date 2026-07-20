@@ -163,6 +163,17 @@ static int cam_cre_mgr_process_cmd_io_buf_req(struct cam_cre_hw_mgr *hw_mgr,
 			}
 
 			io_buf = cre_request->io_buf[i][j];
+
+			if (!acq_io_buf->num_planes ||
+				(acq_io_buf->num_planes > CAM_CRE_MAX_PLANES)) {
+				CAM_ERR(CAM_CRE,
+					"i %d j %d res_type %d Invalid num_planes: %u ctx id: %u max_planes: %u",
+					i, j, acq_io_buf->res_id, acq_io_buf->num_planes,
+					ctx_data->ctx_id, CAM_PACKET_MAX_PLANES);
+				cam_cre_free_io_config(cre_request);
+				return -EINVAL;
+			}
+
 			io_buf->num_planes = acq_io_buf->num_planes;
 			io_buf->resource_type = acq_io_buf->res_id;
 			io_buf->direction = acq_io_buf->direction;
